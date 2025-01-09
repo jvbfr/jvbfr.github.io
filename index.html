@@ -73,9 +73,9 @@
 
     .poem {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.2em; /* Responsive font size */
+      font-size: 1.4em; /* Responsive font size */
       color: rgba(255, 255, 255, 0.8); /* Transparent white font */
-      text-align: right;
+      text-align: center;
       margin: 10px;
       white-space: pre-line;
       line-height: 1.3em; /* Adjusted line height */
@@ -106,6 +106,25 @@
       font-size: 1.3em; /* Responsive font size */
     }
 
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay .poem {
+      color: white;
+      font-size: 1.6em;
+    }
+
     @media (max-width: 768px) {
       .controls p {
         font-size: 1em;
@@ -129,6 +148,10 @@
       .timer p {
         font-size: 1em;
       }
+
+      .overlay .poem {
+        font-size: 1.4em;
+      }
     }
   </style>
 </head>
@@ -144,7 +167,10 @@
     <button onclick="showImage('photo1')">1</button>
     <button onclick="showImage('photo2')">2</button>
     <button onclick="showImage('photo3')">3</button>
+    <button onclick="toggleOverlay()">❤</button>
+  </div>
 
+  <div class="overlay" id="overlay">
     <div class="poem">
       1 Coríntios 13:4-7<br><br>
       O amor é paciente, o amor é bondoso. <br>
@@ -201,6 +227,16 @@
         image.classList.remove('active'); // Remove "active" from all images
       });
       document.getElementById(imageId).classList.add('active'); // Add "active" to the selected image
+    }
+
+    // Function to toggle overlay
+    function toggleOverlay() {
+      const overlay = document.getElementById('overlay');
+      if (overlay.style.display === 'flex') {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.display = 'flex';
+      }
     }
   </script>
 </body>
