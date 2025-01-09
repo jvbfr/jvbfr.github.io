@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      background: black;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      display: flex;
+    }
+
+    .background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      animation: fade 15s infinite;
+    }
+
+    .background img:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .background img:nth-child(2) {
+      animation-delay: 5s;
+    }
+
+    .background img:nth-child(3) {
+      animation-delay: 10s;
+    }
+
+    @keyframes fade {
+      0% { opacity: 1; }
+      33.33% { opacity: 1; }
+      66.66% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .phrase, .timer p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5em;
+      text-align: center;
+      color: yellow;
+      text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+      margin: 10px 0;
+    }
+
+    .timer p {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <img src="photo1.png" alt="Photo 1">
+    <img src="photo2.png" alt="Photo 2">
+    <img src="photo3.png" alt="Photo 3">
+  </div>
+
+  <div class="phrase">
+    Tempo para ver o meu amor:
+  </div>
+
+  <div class="timer">
+    <p id="countdown">00d 00h 00m 00s</p>
+  </div>
+
+  <script>
+    // Target date: February 6, 2025, at 19:00 (local time)
+    const targetDate = new Date('2025-02-06T19:00:00').getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime(); // Get the current time
+      const distance = targetDate - now; // Calculate the difference between the target date and now
+
+      // If the target date has passed, stop the countdown
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "TIME'S UP!";
+        return;
+      }
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Update the timer every second
+    setInterval(updateTimer, 1000);
+
+    // Call the function initially to prevent a 1-second delay
+    updateTimer();
+  </script>
+</body>
+</html>
+
