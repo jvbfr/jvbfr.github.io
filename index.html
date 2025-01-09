@@ -43,27 +43,27 @@
 
     .controls {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 10px;
+      right: 10px;
       text-align: right;
     }
 
     .controls p {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.5em;
+      font-size: 1.2em;
       color: yellow;
       text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .controls button {
-      font-size: 1.2em;
+      font-size: 1em;
       background: yellow;
       color: black;
       border: none;
       border-radius: 5px;
-      padding: 10px 15px;
-      margin: 0 5px;
+      padding: 8px 12px;
+      margin: 0 2px;
       cursor: pointer;
     }
 
@@ -73,11 +73,10 @@
 
     .poem {
       font-family: 'Dancing Script', cursive;
-      font-size: 1.4em; /* Slightly larger text */
+      font-size: 1.2em; /* Responsive font size */
       color: rgba(255, 255, 255, 0.8); /* Transparent white font */
       text-align: right;
-      margin-top: 20px;
-      margin-right: 10px;
+      margin: 10px;
       white-space: pre-line;
       line-height: 1.3em; /* Adjusted line height */
       text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
@@ -89,7 +88,7 @@
 
     .phrase, .timer {
       font-family: 'Dancing Script', cursive;
-      font-size: 2em;
+      font-size: 1.5em; /* Responsive font size */
       text-align: center;
       color: yellow;
       text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
@@ -98,13 +97,38 @@
 
     .footer {
       position: absolute;
-      bottom: 20px;
+      bottom: 10px;
       width: 100%;
       text-align: center;
     }
 
     .timer p {
-      font-size: 1.5em;
+      font-size: 1.3em; /* Responsive font size */
+    }
+
+    @media (max-width: 768px) {
+      .controls p {
+        font-size: 1em;
+      }
+
+      .controls button {
+        font-size: 0.9em;
+        padding: 6px 10px;
+      }
+
+      .poem {
+        font-size: 1em;
+        margin: 5px;
+        line-height: 1.2em;
+      }
+
+      .phrase, .timer {
+        font-size: 1.2em;
+      }
+
+      .timer p {
+        font-size: 1em;
+      }
     }
   </style>
 </head>
