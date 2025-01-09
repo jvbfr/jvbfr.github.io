@@ -28,6 +28,19 @@
       z-index: -1;
     }
 
+    .background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+    }
+
+    .background video.active {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+
     .background img {
       width: 100%;
       height: 100%;
@@ -115,18 +128,18 @@
 </head>
 <body>
   <div class="background">
-    <img src="photo1.png" alt="Photo 1" id="photo1">
-    <img src="photo2.png" alt="Photo 2" id="photo2" class="active">
-    <img src="photo3.png" alt="Photo 3" id="photo3">
+    <video src="video1.mp4" id="video1" class="active" loop autoplay muted></video>
+    <video src="video2.mp4" id="video2" loop autoplay muted></video>
+    <video src="video3.mp4" id="video3" loop autoplay muted></video>
     <img src="poem.png" alt="Poem" id="poem">
   </div>
 
   <div class="controls">
     <p>Escolha uma lembrança</p>
-    <button onclick="showImage('photo1')">1</button>
-    <button onclick="showImage('photo2')">2</button>
-    <button onclick="showImage('photo3')">3</button>
-    <button onclick="showImage('poem')">❤</button>
+    <button onclick="showMedia('video1')">1</button>
+    <button onclick="showMedia('video2')">2</button>
+    <button onclick="showMedia('video3')">3</button>
+    <button onclick="showMedia('poem')">❤</button>
   </div>
 
   <div class="footer">
@@ -166,18 +179,14 @@
     setInterval(updateTimer, 1000);
     updateTimer(); // Call the function initially to prevent a 1-second delay
 
-    // Function to change the image
-    function showImage(imageId) {
-      const images = document.querySelectorAll('.background img');
-      images.forEach(image => {
-        image.classList.remove('active'); // Remove "active" from all images
+    // Function to change the media
+    function showMedia(mediaId) {
+      const mediaElements = document.querySelectorAll('.background video, .background img');
+      mediaElements.forEach(media => {
+        media.classList.remove('active'); // Remove "active" from all media elements
       });
-      document.getElementById(imageId).classList.add('active'); // Add "active" to the selected image
+      document.getElementById(mediaId).classList.add('active'); // Add "active" to the selected media element
     }
-  </script>
-</body>
-</html>
-
   </script>
 </body>
 </html>
