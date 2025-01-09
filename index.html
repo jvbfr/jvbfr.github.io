@@ -62,6 +62,13 @@
       z-index: 5;
     }
 
+    .music-control {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+    }
+
     .controls p {
       font-family: 'Dancing Script', cursive;
       font-size: 1.2em;
@@ -70,7 +77,7 @@
       margin-bottom: 5px;
     }
 
-    .controls button {
+    .controls button, .music-control button {
       font-size: 1em;
       background: yellow;
       color: black;
@@ -81,7 +88,7 @@
       cursor: pointer;
     }
 
-    .controls button:hover {
+    .controls button:hover, .music-control button:hover {
       background: orange;
     }
 
@@ -111,7 +118,7 @@
         font-size: 1em;
       }
 
-      .controls button {
+      .controls button, .music-control button {
         font-size: 0.9em;
         padding: 6px 10px;
       }
@@ -127,11 +134,18 @@
   </style>
 </head>
 <body>
+  <!-- Background Music -->
+  <audio id="background-music" src="music.mp3" loop></audio>
+
   <div class="background">
     <video src="video1.MP4" id="video1" class="active" loop autoplay muted playsinline></video>
     <video src="video2.MP4" id="video2" loop autoplay muted playsinline></video>
     <video src="video3.MP4" id="video3" loop autoplay muted playsinline></video>
     <img src="poem.png" alt="Poem" id="poem">
+  </div>
+
+  <div class="music-control">
+    <button onclick="toggleMusic()">🎵</button>
   </div>
 
   <div class="controls">
@@ -186,6 +200,16 @@
         media.classList.remove('active'); // Remove "active" from all media elements
       });
       document.getElementById(mediaId).classList.add('active'); // Add "active" to the selected media element
+    }
+
+    // Function to toggle music
+    function toggleMusic() {
+      const music = document.getElementById("background-music");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
     }
   </script>
 </body>
